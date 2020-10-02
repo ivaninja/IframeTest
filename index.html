@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: blue; padding: 20px">
+    <iframe
+      onload="checkFrame()"
+      src="./child.html"
+      scrolling="no"
+      height="1000px"
+      id="test"
+    >
+    </iframe>
+  </body>
+  <script>
+    function checkFrame() {
+      const f = document.getElementById("test");
+      const bodyHeight = f.contentWindow.document.body.offsetHeight;
+      const children = Array.from(f.contentWindow.document.body.children);
+      const actualHeight = children.reduce((acc, e) => {
+        return acc + Number(e.offsetHeight);
+      }, 0);
+      console.log("actualHeight", actualHeight);
+      console.log("bodyHeight", actualHeight);
+      f.style.height = `${actualHeight}px`;
+      f.style.overflow = "hidden";
+    }
+  </script>
+</html>
