@@ -6,13 +6,14 @@
     <title>Document</title>
   </head>
   <body style="background-color: blue; padding: 20px">
-    <iframe
-      onload="checkFrame()"
-      src="./child.html"
-      scrolling="no"
-      height="1000px"
-      id="test"
-    >
+    <!-- 
+
+     можно  
+    onload="checkFrame()" 
+    что бы сразу функция отрабатывала 
+    таймаут для теста до и полсе )))
+     -->
+    <iframe src="./child.html" scrolling="no" height="1000px" id="test">
     </iframe>
   </body>
   <script>
@@ -28,5 +29,7 @@
       f.style.height = `${actualHeight}px`;
       f.style.overflow = "hidden";
     }
+
+    setTimeout(checkFrame, 5000);
   </script>
 </html>
